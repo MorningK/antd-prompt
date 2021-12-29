@@ -1,0 +1,23 @@
+{
+  "name": "@five-show/antd-prompt",
+  "version": "1.0.0",
+  "description": "a simple prompt for ant design",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MorningK/antd-prompt.git"
+  },
+  "keywords": [
+    "antd",
+    "prompt"
+  ],
+  "author": "morningk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MorningK/antd-prompt/issues"
+  },
+  "homepage": "https://github.com/MorningK/antd-prompt#readme"
+}
