@@ -1,0 +1,49 @@
+{
+  "name": "@five-show/antd-prompt",
+  "version": "0.0.1",
+  "description": "a simple prompt for ant design",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
+  "scripts": {
+    "prepare": "husky install",
+    "build": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MorningK/antd-prompt.git"
+  },
+  "keywords": [
+    "antd",
+    "prompt"
+  ],
+  "author": "morningk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MorningK/antd-prompt/issues"
+  },
+  "homepage": "https://github.com/MorningK/antd-prompt#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.1",
+    "@babel/core": "^7.10.2",
+    "@types/react": "^17.0.38",
+    "antd": "^4.0.0",
+    "babel-loader": "^8.1.0",
+    "babel-plugin-import": "^1.12.0",
+    "babel-plugin-transform-async-to-promises": "^0.8.15",
+    "eslint": "^7.2.0",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "husky": "^7.0.1",
+    "lint-staged": "^11.1.2",
+    "prettier": "^2.0.5",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "typescript": "^4.0.0"
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown"
+  },
+  "dependencies": {}
+}
