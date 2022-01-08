@@ -2,7 +2,10 @@
   "name": "@five-show/antd-prompt",
   "version": "0.0.1",
   "description": "a simple prompt for ant design",
-  "main": "src/index.js",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "scripts": {
     "prepare": "husky install",
     "build": "tsc",
