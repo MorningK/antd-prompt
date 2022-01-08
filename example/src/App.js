@@ -1,8 +1,9 @@
 import { Input } from "antd";
-import { useState } from "react";
+import React, { useState } from "react";
 import logo from './logo.svg';
 import './App.css';
-import { Prompt } from "@five-show/antd-prompt";
+// import { Prompt } from "@five-show/antd-prompt";
+import { Modal } from "antd";
 
 const promptProps = {
   title: 'Prompt',
@@ -17,14 +18,15 @@ function App() {
     setVisible(true);
   };
   const handleShowPromptFunction = async () => {
-    try {
-      const value = await Prompt.prompt({
-        ...promptProps
-      });
-      console.log('prompt value is ', value);
-    } catch (e) {
-      console.log('prompt cancel', e);
-    }
+    setVisible(false);
+    // try {
+    //   const value = await Prompt.prompt({
+    //     ...promptProps
+    //   });
+    //   console.log('prompt value is ', value);
+    // } catch (e) {
+    //   console.log('prompt cancel', e);
+    // }
   };
   return (
     <div className="App">
@@ -32,9 +34,12 @@ function App() {
         <button onClick={handleShowPromptComponent}>using as component</button>
         <button onClick={handleShowPromptFunction}>using as function</button>
       </header>
-      <Prompt visible={visible} {...promptProps} onOk={(value) => console.log('prompt value is ', value)} onCancel={() => setVisible(false)} />
+      <Modal visible={visible} title="Modal" >
+        <span>{visible ? 'true' : 'false'}</span>
+      </Modal>
+      {/*<Prompt visible={visible} {...promptProps} onOk={(value) => console.log('prompt value is ', value)} onCancel={() => setVisible(false)} />*/}
     </div>
   );
-};
+}
 
 export default App;

@@ -2,7 +2,7 @@
   "name": "@five-show/antd-prompt",
   "version": "0.0.1",
   "description": "a simple prompt for ant design",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "scripts": {
     "prepare": "husky install",
     "build": "tsc",
@@ -26,6 +26,7 @@
     "@babel/cli": "^7.10.1",
     "@babel/core": "^7.10.2",
     "@types/react": "^17.0.38",
+    "@types/react-dom": "^17.0.11",
     "antd": "^4.0.0",
     "babel-loader": "^8.1.0",
     "babel-plugin-import": "^1.12.0",

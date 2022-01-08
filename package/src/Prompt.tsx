@@ -19,7 +19,7 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
   children,
   ...otherProps
 }) => {
-  const handleOk = async (values) => {
+  const handleOk = async (values: { input: any; }) => {
     await onOk?.(values.input);
   };
   return (
@@ -52,7 +52,7 @@ Prompt.prompt = async (props) => {
       await reject();
       destroy();
     };
-    const handleOk = async (value) => {
+    const handleOk = async (value: unknown) => {
       await resolve(value);
       destroy();
     };
