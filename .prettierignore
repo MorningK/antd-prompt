@@ -1,0 +1,5 @@
+# ignore everything in root
+/*
+
+# except /src
+!/src/

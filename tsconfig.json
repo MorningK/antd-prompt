@@ -1,0 +1,32 @@
+{
+  "compilerOptions": {
+    "lib": ["es2015", "dom"],
+    "rootDir": "src",
+    "outDir": "build",
+    "target": "ES5",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "downlevelIteration": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
+    "declaration": false,
+    "strictNullChecks": true
+  },
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "build",
+    "**/__tests__",
+    "**/__test__",
+    "**/demo"
+  ]
+}
