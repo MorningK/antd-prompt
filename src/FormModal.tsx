@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import {ButtonProps, Form, FormProps, Modal, ModalProps} from 'antd';
+import React, { useState } from 'react';
+import { ButtonProps, Form, FormProps, Modal, ModalProps } from 'antd';
 
 export type FormModalProps<T = any> = {
   visible?: boolean;
