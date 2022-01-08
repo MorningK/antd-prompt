@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FormModal, { FormModalProps } from './FormModal';
-import {Form} from "antd";
+import FormModal, {FormModalProps} from './FormModal';
+import {Form} from 'antd';
 
 export type PromptProp<T = any> = FormModalProps & {
   label?: string;
@@ -23,10 +23,7 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
     await onOk?.(values.input);
   };
   return (
-    <FormModal
-      onOk={handleOk}
-      {...otherProps}
-    >
+    <FormModal onOk={handleOk} {...otherProps}>
       <Form.Item
         name="input"
         label={label}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {ButtonProps, Form, FormProps, Modal, ModalProps} from 'antd';
 
 export type FormModalProps<T = any> = {
@@ -12,8 +12,8 @@ export type FormModalProps<T = any> = {
   addonBefore?: React.ReactElement;
   addonAfter?: React.ReactElement;
   children?: React.ReactElement;
-  modalProps?: ModalProps,
-  formProps?: FormProps,
+  modalProps?: ModalProps;
+  formProps?: FormProps;
 };
 
 const FormModal: React.FC<FormModalProps<any>> = ({
@@ -55,7 +55,14 @@ const FormModal: React.FC<FormModalProps<any>> = ({
       {...modalProps}
     >
       {addonBefore}
-      <Form id="prompt-form" className="bg-white py-6" layout="vertical" preserve={false} onFinish={handleFinish} {...formProps}>
+      <Form
+        id="prompt-form"
+        className="bg-white py-6"
+        layout="vertical"
+        preserve={false}
+        onFinish={handleFinish}
+        {...formProps}
+      >
         {children}
       </Form>
       {addonAfter}
