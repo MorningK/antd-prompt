@@ -1,8 +1,7 @@
 import { Input } from "antd";
 import React, { useState } from "react";
-import logo from './logo.svg';
 import './App.css';
-// import { Prompt } from "@five-show/antd-prompt";
+import { Prompt } from "@five-show/antd-prompt";
 import { Modal } from "antd";
 
 const promptProps = {
@@ -19,14 +18,14 @@ function App() {
   };
   const handleShowPromptFunction = async () => {
     setVisible(false);
-    // try {
-    //   const value = await Prompt.prompt({
-    //     ...promptProps
-    //   });
-    //   console.log('prompt value is ', value);
-    // } catch (e) {
-    //   console.log('prompt cancel', e);
-    // }
+    try {
+      const value = await Prompt.prompt({
+        ...promptProps
+      });
+      console.log('prompt value is ', value);
+    } catch (e) {
+      console.log('prompt cancel', e);
+    }
   };
   return (
     <div className="App">
@@ -37,7 +36,7 @@ function App() {
       <Modal visible={visible} title="Modal" >
         <span>{visible ? 'true' : 'false'}</span>
       </Modal>
-      {/*<Prompt visible={visible} {...promptProps} onOk={(value) => console.log('prompt value is ', value)} onCancel={() => setVisible(false)} />*/}
+      <Prompt visible={visible} {...promptProps} onOk={(value) => console.log('prompt value is ', value)} onCancel={() => setVisible(false)} />
     </div>
   );
 }

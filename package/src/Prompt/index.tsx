@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FormModal, { FormModalProps } from './FormModal';
+import FormModal, { FormModalProps } from '../FormModal';
 import { Form } from 'antd';
 
 export type PromptProp<T = any> = FormModalProps & {
@@ -19,7 +19,7 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
   children,
   ...otherProps
 }) => {
-  const handleOk = async (values: { input: any; }) => {
+  const handleOk = async (values) => {
     await onOk?.(values.input);
   };
   return (
@@ -52,7 +52,7 @@ Prompt.prompt = async (props) => {
       await reject();
       destroy();
     };
-    const handleOk = async (value: unknown) => {
+    const handleOk = async (value) => {
       await resolve(value);
       destroy();
     };

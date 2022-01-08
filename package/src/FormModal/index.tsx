@@ -30,11 +30,11 @@ const FormModal: React.FC<FormModalProps<any>> = ({
   formProps,
   children,
 }) => {
-  // const [loading, setLoading] = useState(false);
-  const handleFinish = async (values: any) => {
-    // setLoading(true);
+  const [loading, setLoading] = useState(false);
+  const handleFinish = async (values) => {
+    setLoading(true);
     await onOk?.(values);
-    // setLoading(false);
+    setLoading(false);
   };
   return (
     <Modal
@@ -51,7 +51,7 @@ const FormModal: React.FC<FormModalProps<any>> = ({
       centered
       destroyOnClose
       closable={false}
-      // confirmLoading={loading}
+      confirmLoading={loading}
       {...modalProps}
     >
       {addonBefore}
