@@ -31,30 +31,40 @@ function App() {
     try {
       const value = await Prompt.prompt({
         ...promptProps,
-        // onOk: handleOk,
       });
-      console.log('prompt value is ', value);
-      await somethingAsync();
+      await handleOk(value);
+    } catch (e) {
+      console.log('prompt cancel', e);
+    }
+  };
+  const handleShowPromptFunctionLoading = async () => {
+    setVisible(false);
+    try {
+      await Prompt.prompt({
+        ...promptProps,
+        onOk: handleOk,
+      });
     } catch (e) {
       console.log('prompt cancel', e);
     }
   };
   const handleOk = async (value) => {
     console.log('prompt value is ', value);
-    await somethingAsync();
+    await somethingAsync(value);
     setVisible(false);
   };
   const handleCancel = () => {
     setVisible(false);
   };
-  const somethingAsync = async () => {
+  const somethingAsync = async (value) => {
     await sleep(1000);
-    console.log('async task finished');
+    console.log('async task finished', value);
   };
   return (
     <Card className="App">
       <Space>
         <Button onClick={handleShowPromptComponent}>component</Button>
+        <Button onClick={handleShowPromptFunctionLoading}>function loading</Button>
         <Button onClick={handleShowPromptFunction}>function</Button>
       </Space>
       <Prompt visible={visible} onOk={handleOk} onCancel={handleCancel} {...promptProps} />
