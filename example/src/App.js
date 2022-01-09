@@ -8,6 +8,11 @@ const promptProps = {
   label: 'Price',
   initialValue: 'qwer',
   children: <Input />,
+  modalProps: {
+    afterClose: () => {
+      console.log('afterClose modal');
+    },
+  },
 };
 
 const sleep = async (ms) => {
@@ -25,10 +30,11 @@ function App() {
     setVisible(false);
     try {
       const value = await Prompt.prompt({
-        ...promptProps
+        ...promptProps,
+        // onOk: handleOk,
       });
-      await somethingAsync();
       console.log('prompt value is ', value);
+      await somethingAsync();
     } catch (e) {
       console.log('prompt cancel', e);
     }
@@ -38,8 +44,12 @@ function App() {
     await somethingAsync();
     setVisible(false);
   };
+  const handleCancel = () => {
+    setVisible(false);
+  };
   const somethingAsync = async () => {
     await sleep(1000);
+    console.log('async task finished');
   };
   return (
     <Card className="App">
@@ -47,7 +57,7 @@ function App() {
         <Button onClick={handleShowPromptComponent}>component</Button>
         <Button onClick={handleShowPromptFunction}>function</Button>
       </Space>
-      <Prompt visible={visible} onOk={handleOk} onCancel={() => setVisible(false)} {...promptProps} />
+      <Prompt visible={visible} onOk={handleOk} onCancel={handleCancel} {...promptProps} />
     </Card>
   );
 }

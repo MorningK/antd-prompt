@@ -39,31 +39,35 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
 
 Prompt.prompt = async (props) => {
   const { visible, onCancel, onOk, ...otherPromptProps } = props;
+  const afterClose = otherPromptProps?.modalProps?.afterClose;
   return new Promise((resolve, reject) => {
-    const div = document.createElement('div');
-    document.body.appendChild(div);
+    const container = document.createDocumentFragment();
     const destroy = () => {
-      const unmountResult = ReactDOM.unmountComponentAtNode(div);
-      if (unmountResult) {
-        div.parentNode?.removeChild(div);
-      }
+      ReactDOM.unmountComponentAtNode(container);
+      afterClose?.();
     };
     const handleCancel = async () => {
-      await reject();
-      destroy();
+      await onCancel?.();
+      reject();
+      setTimeout(() => {
+        destroy();
+      });
     };
     const handleOk = async (value) => {
-      await resolve(value);
-      destroy();
+      await onOk?.(value);
+      resolve(value);
+      setTimeout(() => {
+        destroy();
+      });
     };
     ReactDOM.render(
-      React.createElement(Prompt, {
-        visible: true,
-        onCancel: handleCancel,
-        onOk: handleOk,
-        ...otherPromptProps,
-      }),
-      div
+      <Prompt
+        visible={true}
+        onOk={handleOk}
+        onCancel={handleCancel}
+        {...otherPromptProps}
+      />,
+      container
     );
   });
 };
