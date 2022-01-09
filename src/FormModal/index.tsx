@@ -5,10 +5,10 @@ export type FormModalProps<T = any> = {
   visible?: boolean;
   title?: string;
   cancelText?: string;
-  onCancel?: () => void;
+  onCancel?: () => void | Promise<any>;
   okText?: string;
   okButtonProps?: ButtonProps;
-  onOk?: (values: T) => Promise<any>;
+  onOk?: (values: T) => void | Promise<any>;
   addonBefore?: React.ReactElement;
   addonAfter?: React.ReactElement;
   children?: React.ReactElement;
