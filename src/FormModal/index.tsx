@@ -57,7 +57,6 @@ const FormModal: React.FC<FormModalProps<any>> = ({
       {addonBefore}
       <Form
         id="prompt-form"
-        className="bg-white py-6"
         layout="vertical"
         preserve={false}
         onFinish={handleFinish}
