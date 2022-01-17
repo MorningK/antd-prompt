@@ -4,7 +4,7 @@ a simple prompt for ant design
 - Prompt
 - FromModal
 ## Requirement
-- react >= v16.8
+- react >= 16.8
 - antd >= 4.0
 ## Install
 npm
