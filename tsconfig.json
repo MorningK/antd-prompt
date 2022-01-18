@@ -22,6 +22,8 @@
     "dist",
     "**/__tests__",
     "**/__test__",
-    "**/example"
-  ]
+    "**/example",
+    "**/coverage"
+  ],
+  "include": ["./src", "./jest-setup.js"]
 }
