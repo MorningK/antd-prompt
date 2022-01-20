@@ -25,5 +25,5 @@
     "**/example",
     "**/coverage"
   ],
-  "include": ["./src", "./jest-setup.js"]
+  "include": ["./src"]
 }
