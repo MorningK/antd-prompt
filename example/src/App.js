@@ -43,6 +43,7 @@ function App() {
       await Prompt.prompt({
         ...promptProps,
         children: <Input.Password />,
+        name: ['prompt', 'password'],
         onOk: handleOk,
       });
     } catch (e) {

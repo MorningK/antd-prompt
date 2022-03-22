@@ -31,9 +31,11 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
   ...otherProps
 }) => {
   const handleOk = async (values) => {
-    const fieldName =
-      name instanceof Array ? name.flat(Infinity).join('.') : name;
-    await onOk?.(values[fieldName]);
+    if (name instanceof Array) {
+      await onOk?.(name.reduce((pre, cur) => pre[cur], values));
+      return;
+    }
+    await onOk?.(values[name]);
   };
   return (
     <FormModal onOk={handleOk} {...otherProps}>
