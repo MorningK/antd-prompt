@@ -1,45 +1,51 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FormModal, { FormModalProps } from '../FormModal';
-import { Form, Input } from 'antd';
+import { Form, Input, FormItemProps } from 'antd';
 
-export type PromptProp<T = any> = Omit<FormModalProps, 'onOk'> & {
+export type PromptProp<T = any> = Omit<FormModalProps, 'onOk' | 'children'> & {
   onOk?: (value: T) => Promise<any>;
+  name?: string;
   label?: string;
+  required?: boolean;
   initialValue?: T;
+  formItemProps?: FormItemProps;
+  children?: React.ReactNode;
 };
 
 type PromptStaticFunctions = {
   prompt: (props: PromptProp) => Promise<any>;
 };
 
+const defaultChildren = <Input autoComplete="false" autoFocus allowClear />;
+
 const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
   onOk,
+  name = 'input',
   label,
+  required = true,
   initialValue,
-  children,
+  formItemProps,
+  children = defaultChildren,
   ...otherProps
 }) => {
   const handleOk = async (values) => {
-    await onOk?.(values.input);
+    await onOk?.(values[name]);
   };
   return (
     <FormModal onOk={handleOk} {...otherProps}>
       <Form.Item
-        name="input"
+        name={name}
         label={label}
         initialValue={initialValue}
-        required={true}
-        rules={[{ required: true }]}
+        required={required}
+        rules={[{ required: required }]}
+        {...formItemProps}
       >
         {children}
       </Form.Item>
     </FormModal>
   );
-};
-
-Prompt.defaultProps = {
-  children: <Input autoComplete="false" autoFocus allowClear />,
 };
 
 Prompt.prompt = async (props) => {
