@@ -1,3 +1,4 @@
+import { NamePath } from 'rc-field-form/lib/interface';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FormModal, { FormModalProps } from '../FormModal';
@@ -5,8 +6,8 @@ import { Form, Input, FormItemProps } from 'antd';
 
 export type PromptProp<T = any> = Omit<FormModalProps, 'onOk' | 'children'> & {
   onOk?: (value: T) => Promise<any>;
-  name?: string;
-  label?: string;
+  name?: NamePath;
+  label?: React.ReactNode;
   required?: boolean;
   initialValue?: T;
   formItemProps?: FormItemProps;
@@ -30,7 +31,9 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
   ...otherProps
 }) => {
   const handleOk = async (values) => {
-    await onOk?.(values[name]);
+    const fieldName =
+      name instanceof Array ? name.flat(Infinity).join('.') : name;
+    await onOk?.(values[fieldName]);
   };
   return (
     <FormModal onOk={handleOk} {...otherProps}>

@@ -55,31 +55,40 @@ npm run start
 | onCancel      | Specify a function that will be called when a user clicks mask, close button on top right or Cancel button | () => void &#124; Promise<any> |         |
 | okText        | Text of the OK button | string |         |
 | okButtonProps | The ok button props | [ButtonProps](https://ant.design/components/button/#API) |         |
-| onOk          | Specify a function that will be called when a user clicks the OK button | (values: T) => void &#124; Promise<any> |         |
+| onOk          | Specify a function that will be called when a user clicks the OK button | (value: T) => void &#124; Promise<any> |         |
 | addonBefore   | The ReactNode add before Form | ReactNode |         |
 | addonAfter    | The ReactNode add after Form | ReactNode |         |
 | modalProps    | The modal props | [ModalProps](https://ant.design/components/modal/#API) |         |
 | formProps     | The form props | [FromProps](https://ant.design/components/form/#Form) |         |
-| label         | The label text of Form.Item | string |         |
+| name  | The name of Form.Item | [NamePath](https://ant.design/components/form-cn/#NamePath) |   input      | 
+| label         | The label text of Form.Item | ReactNode |         |
+| required  | The initialValue of Form.Item | boolean |    true     |
 | initialValue  | The initialValue of Form.Item | T |         |
+| formItemProps  | The props of Form.Item | [FormItemProps](https://ant.design/components/form-cn/#Form.Item) |         |
+| children  | The children of Form.Item | ReactNode |   `<Input autoComplete="false" autoFocus allowClear />`     |
 
 ```typescript
-export declare type FormModalProps<T = any> = {
+export type FormModalProps<T = any> = {
   visible?: boolean;
-  title?: string;
-  cancelText?: string;
+  title?: React.ReactNode;
+  cancelText?: React.ReactNode;
   onCancel?: () => void | Promise<any>;
-  okText?: string;
+  okText?: React.ReactNode;
   okButtonProps?: ButtonProps;
   onOk?: (values: T) => void | Promise<any>;
-  addonBefore?: React.ReactElement;
-  addonAfter?: React.ReactElement;
-  children?: React.ReactElement;
+  addonBefore?: React.ReactNode;
+  addonAfter?: React.ReactNode;
+  children?: React.ReactNode;
   modalProps?: ModalProps;
   formProps?: FormProps;
 };
-export declare type PromptProp<T = any> = FormModalProps & {
+export type PromptProp<T = any> = Omit<FormModalProps, 'onOk' | 'children'> & {
+  onOk?: (value: T) => Promise<any>;
+  name?: string;
   label?: string;
+  required?: boolean;
   initialValue?: T;
+  formItemProps?: FormItemProps;
+  children?: React.ReactNode;
 };
 ```
