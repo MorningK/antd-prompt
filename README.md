@@ -50,10 +50,10 @@ npm run start
 | prop          | description        | type    | default |
 |---------------|--------------------|---------|---------|
 | visible       | Whether the modal dialog is visible or not | boolean |    |
-| title         | The modal dialog's title | string  |         |
-| cancelText    | Text of the Cancel button | string  |         |
+| title         | The modal dialog's title | ReactNode  |         |
+| cancelText    | Text of the Cancel button | ReactNode  |         |
 | onCancel      | Specify a function that will be called when a user clicks mask, close button on top right or Cancel button | () => void &#124; Promise<any> |         |
-| okText        | Text of the OK button | string |         |
+| okText        | Text of the OK button | ReactNode |         |
 | okButtonProps | The ok button props | [ButtonProps](https://ant.design/components/button/#API) |         |
 | onOk          | Specify a function that will be called when a user clicks the OK button | (value: T) => void &#124; Promise<any> |         |
 | addonBefore   | The ReactNode add before Form | ReactNode |         |
