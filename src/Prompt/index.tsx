@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import FormModal, { FormModalProps } from '../FormModal';
-import { Form } from 'antd';
+import { Form, Input } from 'antd';
 
-export type PromptProp<T = any> = FormModalProps & {
+export type PromptProp<T = any> = Omit<FormModalProps, 'onOk'> & {
+  onOk?: (value: T) => Promise<any>;
   label?: string;
   initialValue?: T;
 };
@@ -35,6 +36,10 @@ const Prompt: React.FC<PromptProp> & PromptStaticFunctions = ({
       </Form.Item>
     </FormModal>
   );
+};
+
+Prompt.defaultProps = {
+  children: <Input autoComplete="false" autoFocus allowClear />,
 };
 
 Prompt.prompt = async (props) => {

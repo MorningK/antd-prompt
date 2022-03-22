@@ -7,7 +7,6 @@ const promptProps = {
   title: 'Prompt',
   label: 'Price',
   initialValue: 'qwer',
-  children: <Input />,
   modalProps: {
     afterClose: () => {
       console.log('afterClose modal');
@@ -31,6 +30,7 @@ function App() {
     try {
       const value = await Prompt.prompt({
         ...promptProps,
+        children: <Input.TextArea />,
       });
       await handleOk(value);
     } catch (e) {
@@ -42,6 +42,7 @@ function App() {
     try {
       await Prompt.prompt({
         ...promptProps,
+        children: <Input.Password />,
         onOk: handleOk,
       });
     } catch (e) {
