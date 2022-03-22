@@ -58,6 +58,23 @@ test('test Prompt Component', async () => {
     expect(handleOk.mock.results[0].value).toBe('199');
   });
 
+  // set name as array
+  rerender(
+    <Prompt
+      {...promptProps}
+      name={['prompt', 'value']}
+      onOk={handleOk}
+      onCancel={handleCancel}
+    />
+  );
+  act(() => {
+    fireEvent.click(okBtn);
+  });
+  await waitFor(() => {
+    expect(handleOk).toBeCalled();
+    expect(handleOk.mock.results[0].value).toBe('199');
+  });
+
   // set visible to false and rerender
   promptProps.visible = false;
   rerender(<Prompt {...promptProps} onOk={handleOk} onCancel={handleCancel} />);
@@ -67,11 +84,12 @@ test('test Prompt Component', async () => {
 test('test Prompt method when ok', async () => {
   Prompt.prompt({
     ...promptProps,
+    children: undefined,
   })
     .then(handleOk)
     .catch(handleCancel);
   // Prompt become visible
-  const input = screen.getByTestId(testId);
+  const input = screen.getByLabelText(promptProps.label);
   const okBtn = screen.getByText('OK');
   expect(input).toBeVisible();
   expect(input).toHaveValue('99');

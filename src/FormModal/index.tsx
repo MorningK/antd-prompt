@@ -3,15 +3,15 @@ import { ButtonProps, Form, FormProps, Modal, ModalProps } from 'antd';
 
 export type FormModalProps<T = any> = {
   visible?: boolean;
-  title?: string;
-  cancelText?: string;
+  title?: React.ReactNode;
+  cancelText?: React.ReactNode;
   onCancel?: () => void | Promise<any>;
-  okText?: string;
+  okText?: React.ReactNode;
   okButtonProps?: ButtonProps;
   onOk?: (values: T) => void | Promise<any>;
-  addonBefore?: React.ReactElement;
-  addonAfter?: React.ReactElement;
-  children?: React.ReactElement;
+  addonBefore?: React.ReactNode;
+  addonAfter?: React.ReactNode;
+  children?: React.ReactNode;
   modalProps?: ModalProps;
   formProps?: FormProps;
 };
